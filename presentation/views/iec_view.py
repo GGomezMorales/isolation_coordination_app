@@ -67,4 +67,4 @@ class IECView(Column):
         self.update()
 
     def go_back(self, e):
-        self.navigator.go_back()
+        self.navigator.GoBack()

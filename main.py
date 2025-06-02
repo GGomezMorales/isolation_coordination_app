@@ -1,18 +1,19 @@
-from flet import app, Page
-from flet.core.types import ThemeMode
+from flet import app, Page, ThemeMode
+from flet.core import padding
 
 from core.app import IsolationApp
 
 
-def main(page: Page):
-    page.title = "Coordinación de Aislamiento"
+def main(page: Page) -> None:
+    page.title = "Isolation Coordination Method"
+    page.padding = padding.all(20)
     page.theme_mode = ThemeMode.LIGHT
     page.window.height = 800
     page.window.width = 600
     page.window.center()
 
-    app = IsolationApp(page)
-    page.add(app)
+    iso_app: IsolationApp = IsolationApp(page)
+    page.add(iso_app)
     page.update()
 
 

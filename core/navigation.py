@@ -3,24 +3,24 @@ from flet import Control, Page
 
 class Navigator:
     def __init__(self, page: Page, container: Control):
-        self.page = page
-        self.container = container
-        self.routes = {}
-        self.history = []
+        self.page: Page = page
+        self.container: Control = container
+        self.routes: dict = {}
+        self.history: list = []
 
-    def register_route(self, path, view):
+    def RegisterRoute(self, path: str, view: Control) -> None:
         self.routes[path] = view
 
-    def navigate_to(self, path):
+    def NavigateTo(self, path: str) -> None:
         if path in self.routes:
-            view = self.routes[path]
+            view: Control = self.routes[path]
             self.container.controls.clear()
             self.container.controls.append(view)
             self.history.append(path)
             self.page.update()
 
-    def go_back(self):
+    def GoBack(self):
         if len(self.history) > 1:
             self.history.pop()
-            prev_path = self.history[-1]
-            self.navigate_to(prev_path)
+            prev_path: str = self.history[-1]
+            self.NavigateTo(prev_path)
